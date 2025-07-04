@@ -39,6 +39,6 @@ public abstract class BankAccount {
         System.out.println("Account Type: " + this.accountType);
         System.out.println("Account Number: " + this.accountNumber);
         System.out.println("Account Name: " + this.accountName);
-        System.out.printf("Available Balance: %.2f%n ", this.availableBalance);
+        System.out.printf("Available Balance: %.2f%n", this.availableBalance);
     }
 }

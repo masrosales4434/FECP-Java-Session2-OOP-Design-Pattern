@@ -124,15 +124,15 @@ class BankAccountFactoryTest {
 
     @Test
     public void testDisplayDetails() {
-        BankAccount checkingAccount = bankAccountFactory.createBankAccount("Checking", "7384", "John Doe");
+        BankAccount checkingAccount = bankAccountFactory.createBankAccount("checking", "7384", "John Doe");
 
         checkingAccount.displayDetails();
 
         String expectedOutput = String.format(
-                "Account Type: Checking%n" +
+                "Account Type: checking%n" +
                 "Account Number: 7384%n" +
                 "Account Name: John Doe%n" +
-                "Available Balance: 0.00%n: "
+                "Available Balance: 0.00%n"
         );
 
         assertEquals(expectedOutput, outContent.toString());
