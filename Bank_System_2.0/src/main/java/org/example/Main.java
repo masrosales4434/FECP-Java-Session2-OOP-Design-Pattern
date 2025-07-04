@@ -1,9 +1,13 @@
 package org.example;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        ArrayList<BankAccount> listOfBankAccounts = new ArrayList<>();
+        BankAccountFactory bankAccountFactory = new BankAccountFactory();
+
         Scanner scanner = new Scanner(System.in);
         int choice;
         String accountType = "";
@@ -44,9 +48,14 @@ public class Main {
                     float initialDepositAmount = scanner.nextFloat();
                     scanner.nextLine();
 
-                } else{
+                    BankAccount createdBankAccount = bankAccountFactory.createBankAccount(accountType,accountNumber,bankAccountHolderName);
 
-                    break;
+                    createdBankAccount.deposit(initialDepositAmount);
+                    listOfBankAccounts.add(createdBankAccount);
+
+
+                } else{
+                    listOfBankAccounts.add(bankAccountFactory.createBankAccount(accountType,accountNumber,bankAccountHolderName));
                 }
 
                 System.out.println("Account created successfully!");
