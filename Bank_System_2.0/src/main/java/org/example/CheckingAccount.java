@@ -11,8 +11,8 @@ public class CheckingAccount extends BankAccount{
     public void computeInterest() {
         System.out.println("Computing interest for account " + accountNumber + "...");
         System.out.println("Current balance: " + availableBalance);
-        
-        double checkingInterest = availableBalance * 0.5;
+
+        double checkingInterest = availableBalance * 0.01;
         System.out.println("Interest earned: " + checkingInterest);
 
         availableBalance += checkingInterest;
