@@ -4,12 +4,17 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        BankAccountFactory bankAccountFactory = new BankAccountFactory();
+        BankAccount createdBankAccount = null;
+
         Scanner scanner = new Scanner(System.in);
         int choice;
         String accountType = "";
         String accountNumber = "";
         String bankAccountHolderName = "";
         String initialDeposit = "";
+        float depositAmount;
+        float withdrawAmount;
 
         System.out.println("===== Welcome to MyBank =====");
 
@@ -21,7 +26,7 @@ public class Main {
         System.out.println("6. Exit");
 
         do {
-            System.out.print("\n Enter choice: ");
+            System.out.print("\nEnter choice: ");
             choice = scanner.nextInt();
             scanner.nextLine();
 
@@ -44,25 +49,34 @@ public class Main {
                     float initialDepositAmount = scanner.nextFloat();
                     scanner.nextLine();
 
-                } else{
+                    createdBankAccount = bankAccountFactory.createBankAccount(accountType,accountNumber,bankAccountHolderName);
 
-                    break;
+                    createdBankAccount.deposit(initialDepositAmount);
+                } else{
+                    createdBankAccount = bankAccountFactory.createBankAccount(accountType,accountNumber,bankAccountHolderName);
                 }
 
                 System.out.println("Account created successfully!");
                 break;
 
             case 2:
+                System.out.print("Enter amount to deposit: ");
+                depositAmount = scanner.nextFloat();
 
+                createdBankAccount.deposit(depositAmount);
                 break;
-            case 3:
 
+            case 3:
+                System.out.print("Enter amount to withdraw: ");
+                withdrawAmount = scanner.nextFloat();
+
+                createdBankAccount.withdraw(withdrawAmount);
                 break;
             case 4:
-
+                createdBankAccount.computeInterest();
                 break;
             case 5:
-
+                createdBankAccount.displayDetails();
                 break;
             case 6:
                 System.out.println("-----Thank you for banking with us!-----");

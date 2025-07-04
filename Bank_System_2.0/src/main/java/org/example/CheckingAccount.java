@@ -4,7 +4,6 @@ public class CheckingAccount extends BankAccount{
 
     public CheckingAccount (String accountType, String accountNumber, String accountName){
         super(accountType,accountNumber,accountName);
-
     }
 
     @Override
