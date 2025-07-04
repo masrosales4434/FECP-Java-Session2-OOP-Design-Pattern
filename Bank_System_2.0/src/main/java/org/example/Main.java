@@ -1,12 +1,11 @@
 package org.example;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        ArrayList<BankAccount> listOfBankAccounts = new ArrayList<>();
         BankAccountFactory bankAccountFactory = new BankAccountFactory();
+        BankAccount createdBankAccount = null;
 
         Scanner scanner = new Scanner(System.in);
         int choice;
@@ -14,6 +13,8 @@ public class Main {
         String accountNumber = "";
         String bankAccountHolderName = "";
         String initialDeposit = "";
+        float depositAmount;
+        float withdrawAmount;
 
         System.out.println("===== Welcome to MyBank =====");
 
@@ -25,7 +26,7 @@ public class Main {
         System.out.println("6. Exit");
 
         do {
-            System.out.print("\n Enter choice: ");
+            System.out.print("\nEnter choice: ");
             choice = scanner.nextInt();
             scanner.nextLine();
 
@@ -48,30 +49,34 @@ public class Main {
                     float initialDepositAmount = scanner.nextFloat();
                     scanner.nextLine();
 
-                    BankAccount createdBankAccount = bankAccountFactory.createBankAccount(accountType,accountNumber,bankAccountHolderName);
+                    createdBankAccount = bankAccountFactory.createBankAccount(accountType,accountNumber,bankAccountHolderName);
 
                     createdBankAccount.deposit(initialDepositAmount);
-                    listOfBankAccounts.add(createdBankAccount);
-
-
                 } else{
-                    listOfBankAccounts.add(bankAccountFactory.createBankAccount(accountType,accountNumber,bankAccountHolderName));
+                    createdBankAccount = bankAccountFactory.createBankAccount(accountType,accountNumber,bankAccountHolderName);
                 }
 
                 System.out.println("Account created successfully!");
                 break;
 
             case 2:
+                System.out.print("Enter amount to deposit: ");
+                depositAmount = scanner.nextFloat();
 
+                createdBankAccount.deposit(depositAmount);
                 break;
-            case 3:
 
+            case 3:
+                System.out.print("Enter amount to withdraw: ");
+                withdrawAmount = scanner.nextFloat();
+
+                createdBankAccount.withdraw(withdrawAmount);
                 break;
             case 4:
-
+                createdBankAccount.computeInterest();
                 break;
             case 5:
-
+                createdBankAccount.displayDetails();
                 break;
             case 6:
                 System.out.println("-----Thank you for banking with us!-----");
