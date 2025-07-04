@@ -73,10 +73,10 @@ public class Main {
                 createdBankAccount.withdraw(withdrawAmount);
                 break;
             case 4:
-
+                createdBankAccount.computeInterest();
                 break;
             case 5:
-
+                createdBankAccount.displayDetails();
                 break;
             case 6:
                 System.out.println("-----Thank you for banking with us!-----");
