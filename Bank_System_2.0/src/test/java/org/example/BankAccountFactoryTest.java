@@ -137,12 +137,4 @@ class BankAccountFactoryTest {
 
         assertEquals(expectedOutput, outContent.toString());
     }
-
-    /*
-    Verify account creation
-    Test deposit and withdraw accuracy
-    Validate interest computation
-    Ensure singleton instance
-
-     */
 }
